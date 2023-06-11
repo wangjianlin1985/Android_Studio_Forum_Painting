@@ -1,0 +1,86 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.chengxusheji.domain">
+
+	<class name="Paint" table="Paint">
+
+          <!-- 主键作品id -->
+          <id name="paintId" column="paintId">
+            <generator class="native"/>
+          </id>
+
+          <!-- 简单字符串属性: 作品名称 -->
+          <property
+            name="paintName"
+            column="paintName"
+            type="string"
+            length="20"
+          />
+
+          <!-- 多对一属性: 绘画分类 -->
+          <many-to-one name="paintClassObj"
+            column="paintClassObj"
+            class="PaintClass"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单图片属性: 作品图片 -->
+          <property
+            name="paintPhoto"
+            column="paintPhoto"
+            type="string"
+            length="50"
+          />
+
+          <!-- 简单字符串属性: 作品描述 -->
+          <property
+            name="paintDesc"
+            column="paintDesc"
+            type="string"
+            length="5000"
+          />
+
+          <!-- 简单图片属性: 作品文件 -->
+          <property
+            name="paintFile"
+            column="paintFile"
+            type="string"
+            length="50"
+          />
+
+          <!-- 简单整型属性: 点击率 -->
+          <property
+            name="hitNum"
+            column="hitNum"
+            type="int"
+
+          />
+
+          <!-- 多对一属性: 发布用户 -->
+          <many-to-one name="userObj"
+            column="userObj"
+            class="UserInfo"
+            lazy="false"
+            outer-join="true"
+            cascade="save-update"
+          />
+
+          <!-- 简单字符串属性: 发布时间 -->
+          <property
+            name="addTime"
+            column="addTime"
+            type="string"
+            length="20"
+          />
+
+
+		 
+		
+	</class>
+	
+</hibernate-mapping>
+ 
